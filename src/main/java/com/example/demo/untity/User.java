@@ -1,6 +1,7 @@
 package com.example.demo.untity;
 
-import io.swagger.annotations.ApiModel;
+import
+        io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "User对象",description = "用户")
