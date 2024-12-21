@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.Result;
+import com.example.demo.service.MerchantService;
 import com.example.demo.service.UserService;
+import com.example.demo.untity.Merchant;
 import com.example.demo.untity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +19,9 @@ import java.util.Map;
 public class FirstController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MerchantService merchantService;
 
 
     @ApiOperation("获取id")
@@ -70,4 +75,11 @@ public class FirstController {
     //test
     //xwwd1
     //陈雯雯
+
+    @ApiOperation("获取商户信息")
+    @GetMapping("getMerchants")
+    public Result getMerchant(){
+        List<Merchant> list = merchantService.getAllMerchant();
+        return Result.ok().data("merchants",list);
+    }
 }
