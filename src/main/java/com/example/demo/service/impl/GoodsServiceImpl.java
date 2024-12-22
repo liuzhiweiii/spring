@@ -13,4 +13,15 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> getAllGoods() {return goodsMapper.getAllGoods();}
+
+    @Override
+    public Goods getGoodsById(Integer goodsid) {
+        return goodsMapper.getGoodsById(goodsid);
+    }
+
+    @Override
+    public boolean deleteGoodsById(Integer goodsid) {
+        return goodsMapper.deleteGoodsById(goodsid) > 0; // 假设返回受影响的行数
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.Result;
+import com.example.demo.service.GoodsService;
 import com.example.demo.service.MerchantService;
 import com.example.demo.service.UserService;
 import com.example.demo.untity.Merchant;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.example.demo.untity.Goods;
 
 @Api("测试")
 @RestController
@@ -22,6 +24,9 @@ public class FirstController {
 
     @Autowired
     private MerchantService merchantService;
+
+    @Autowired
+    private GoodsService goodsService;
 
 
     @ApiOperation("获取id")
@@ -82,4 +87,36 @@ public class FirstController {
         List<Merchant> list = merchantService.getAllMerchant();
         return Result.ok().data("merchants",list);
     }
+
+    @ApiOperation("获取商品列表信息")
+    @GetMapping("getGoods")
+    public Result getGoods(){
+        List<Goods> list = goodsService.getAllGoods();
+        return Result.ok().data("goods",list);
+    }
+
+    /*** 查询指定ID的用户信息。*/
+    @ApiOperation("根据ID查询商品")
+    @GetMapping("goods/{id}")
+    public Result getGoodsById(@PathVariable Integer id) {
+        Goods goods = goodsService.getGoodsById(id);
+        if (goods == null) {
+            return Result.error("商品不存在");
+        }
+        return Result.ok().data("goods", goods);
+    }
+
+    /**
+     * 删除指定ID的商品。
+     */
+    @ApiOperation("根据ID删除商品")
+    @DeleteMapping("goods/{id}")
+    public Result deleteGoodsById(@PathVariable Integer id) {
+        boolean success = goodsService.deleteGoodsById(id);
+        if (!success) {
+            return Result.error("删除失败，可能该商品不存在");
+        }
+        return Result.ok().message("删除成功");
+    }
+
 }

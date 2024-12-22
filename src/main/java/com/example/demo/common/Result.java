@@ -26,7 +26,7 @@ public class Result {
         return r;
 
     }
-    public static Result error(){
+    public static Result error(String s){
         Result r=new Result();
         r.setSuccess(com.example.demo.common.ResultCodeEnum.UNKNOW_REASON.getSuccess());
         r.setCode(com.example.demo.common.ResultCodeEnum.UNKNOW_REASON.getCode());
