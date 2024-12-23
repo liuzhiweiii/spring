@@ -31,7 +31,7 @@ public class Goods {
 
     @ApiModelProperty(value = "商品图片")
     private String goodsphoto;
-    //1
+    //12
 
 
     // 无参构造函数
