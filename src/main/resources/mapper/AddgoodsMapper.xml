@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AddgoodsMapper">
+    <select id="getAllGoods" resultType="com.example.demo.untity.Goods">
+        SELECT goodsid, goodsname, price, label, state FROM goods
+    </select>
+
+    <!-- 新增商品的 SQL -->
+    <insert id="insertGoods" parameterType="com.example.demo.untity.Goods" useGeneratedKeys="true" keyProperty="goodsid">
+        INSERT INTO goods (goodsname, price, label, state)
+        VALUES (#{goodsname}, #{price}, #{label}, #{state, jdbcType=INTEGER})
+    </insert>
+</mapper>
