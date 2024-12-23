@@ -32,6 +32,11 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
+    public void updateMerchant(Merchant merchant) {
+        merchantMapper.updateMerchant(merchant);
+    }
+
+    @Override
     public void deleteMerchantById(Integer id) {
         merchantMapper.deleteMerchantById(id);
     }

@@ -47,6 +47,14 @@ public class MerchantController {
         return Result.ok().data("merchants", merchant);
     }
 
+    @ApiOperation("更新商户")
+    @PostMapping("/updateMerchant")
+    public Result updateMerchant(Merchant merchant) {
+        merchantService.updateMerchant(merchant);
+        System.out.println(merchant);
+        return Result.ok().message("商户更新成功");
+    }
+
     @ApiOperation("删除商户信息")
     @DeleteMapping("/deleteMerchant/{id}")
     public ResponseEntity<Result> deleteMerchant(@PathVariable Integer id){

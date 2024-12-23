@@ -10,6 +10,7 @@ public interface MerchantService {
     List<Merchant> searchMerchants(String search);
     void addMerchant(Merchant merchant);
     Merchant getMerchantById(Integer id);
+    void updateMerchant(Merchant merchant);
     void deleteMerchantById(Integer id);
 
     List<Merchant> searchMerchantsByShow(Integer merchantShow);

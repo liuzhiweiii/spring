@@ -20,6 +20,15 @@
         SELECT * FROM sys_merchant WHERE merchantId = #{id}
     </select>
 
+    <update id="updateMerchant">
+        UPDATE sys_merchant
+        SET merchantName = #{merchantName},
+            merchantIntital = #{merchantIntital},
+            merchantRanking = #{merchantRanking},
+            merchantShow = #{merchantShow}
+        WHERE merchantId = #{merchantId}
+    </update>
+
     <delete id="deleteMerchantById" parameterType="int">
         delete from sys_merchant where merchantId = #{id}
     </delete>

@@ -12,6 +12,7 @@ public interface MerchantMapper {
     List<Merchant> searchMerchants(@Param("search") String search);
     void addMerchant(Merchant merchant); // 新增商户的方法
     Merchant getMerchantById(@Param("id") Integer id);
+    void updateMerchant(Merchant merchant);
     void deleteMerchantById(@Param("id") Integer id);
 
     List<Merchant> searchMerchantsByShow(@Param("merchantShow") Integer merchantShow);

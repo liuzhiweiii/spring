@@ -3,6 +3,8 @@ package com.example.demo.untity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Column;
+
 @ApiModel(value = "Merchant对象",description = "商户")
 public class Merchant {
     @ApiModelProperty(value = "商户ID")
@@ -10,6 +12,7 @@ public class Merchant {
     @ApiModelProperty(value = "商户名称")
     private String merchantName;
     @ApiModelProperty(value = "商户首字母")
+    @Column(name = "merchantInitial")
     private String merchantIntital;
     @ApiModelProperty(value = "是否展示该商户")
     private int merchantShow;
