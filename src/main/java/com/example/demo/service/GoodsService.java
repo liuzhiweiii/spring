@@ -8,6 +8,7 @@ import java.awt.print.Pageable;
 import java.util.List;
 @Service
 public interface GoodsService {
+
     List<Goods> getAllGoods();
 
     // 新增的方法：根据ID获取用户
@@ -21,6 +22,6 @@ public interface GoodsService {
 //
 //    Goods updateGoods(Integer goodsId, Goods goods); // 添加编辑商品的方法声明
 
-
+    boolean updateGoods(Goods goods);
 }
 

@@ -43,4 +43,18 @@
 <!--        WHERE goodsid = #{goods.goodsid}-->
 <!--    </update>-->
 
+
+    <!-- 更新商品的 SQL -->
+    <update id="updateGoodsById" parameterType="com.example.demo.untity.Goods">
+        UPDATE goods
+        SET
+            goodsname = #{goodsname},
+            price = #{price},
+            label = #{label},
+            state = #{state},
+            is_on_shelf = #{isOnShelf},
+            is_new = #{isNew},
+            is_recommended = #{isRecommended}
+        WHERE goodsid = #{goodsid}
+    </update>
 </mapper>

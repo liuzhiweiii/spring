@@ -52,4 +52,10 @@ public class GoodsServiceImpl implements GoodsService {
     public void updateGoodsStatus(Integer id, Boolean isOnShelf, Boolean isNew, Boolean isRecommended) {
         goodsMapper.updateGoodsStatus(id, isOnShelf, isNew, isRecommended);
     }
+
+    @Override
+    public boolean updateGoods(Goods goods) {
+        int rowsAffected = goodsMapper.updateGoodsById(goods);
+        return rowsAffected > 0;
+    }
 }

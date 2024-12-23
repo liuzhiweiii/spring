@@ -36,4 +36,5 @@ public interface GoodsMapper {
      * 更新商品所有信息（完整编辑商品）
      */
 //    void updateGoods(@Param("goods") Goods goods);
+    int updateGoodsById(Goods goods);
 }

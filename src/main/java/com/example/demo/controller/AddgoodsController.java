@@ -31,15 +31,15 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/goods") // 定义基础路径
+//@RequestMapping("/api/goods") // 定义基础路径
 public class AddgoodsController {
 
     @Autowired
     private AddgoodsService addgoodsService;
 
     @ApiOperation("新增商品")
-    @PostMapping("/add") // 只定义具体接口路径
-    public Result addGoods(@RequestBody Goods addGoods) {
+    @PostMapping("/add/addGoods") // 只定义具体接口路径
+    public Result addGoods(Goods addGoods) {
         System.out.println("接收到的商品数据: " + addGoods.toString());
         addgoodsService.addGoods(addGoods);
         return Result.ok().message("商品添加成功");
