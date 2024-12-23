@@ -10,6 +10,7 @@ import lombok.Getter;
 public enum ResultCodeEnum {
     SUCCESS(true,20000,"成功"),
     UNKNOW_REASON(false,500,"失败"),
+    INTERNAL_ERROR(false, 50000, "内部服务器错误"), // 新增枚举项
 
     LOGIN_SUCCESS(true,200,"登录成功"),
     LOGOUT_SUCCESS(true,200,"退出成功"),

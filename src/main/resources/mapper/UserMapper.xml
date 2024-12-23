@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
+    <!--查询信息-->
     <select id="getAllUser" resultType="com.example.demo.untity.User">
         select * from sys_user
     </select>
 
-    <delete id="deleteMerchantById" parameterType="int">
-        DELETE FROM sys_merchant WHERE merchantId = #{id}
+    <!--插入信息-->
+    <insert id="createUser" parameterType="com.example.demo.untity.User">
+        insert into sys_user (username, password, email, avatar, city, created, updated, last_login, status)
+        values (#{username}, #{password}, #{email}, #{avatar}, #{city}, #{created}, #{updated}, #{lastLogin}, #{status})
+    </insert>
+
+    <!-- 根据ID删除商品 -->
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM sys_user WHERE id = #{id}
     </delete>
+
+    <!-- 更新用户信息 -->
+    <update id="updateUserById" parameterType="com.example.demo.untity.User">
+        UPDATE sys_user
+        SET
+            username = #{username},
+            password = #{password},
+            email = #{email},
+            avatar = #{avatar},
+            city = #{city},
+            updated = #{updated},
+            last_login = #{lastLogin},
+            status = #{status}
+        WHERE id = #{id}
+    </update>
 </mapper>

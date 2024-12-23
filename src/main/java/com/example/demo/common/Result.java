@@ -66,6 +66,15 @@ public class Result {
 
     }
 
+    // 新增 setError 方法
+    public static Result setError(ResultCodeEnum result) {
+        Result r = new Result();
+        r.setSuccess(result.getSuccess());
+        r.setCode(result.getCode());
+        r.setMessage(result.getMessages());
+        return r;
+    }
+
 }
 
 

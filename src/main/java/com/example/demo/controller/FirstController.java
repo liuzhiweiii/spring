@@ -1,78 +1,66 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.Result;
-import com.example.demo.service.MerchantService;
+import com.example.demo.common.ResultCodeEnum;
 import com.example.demo.service.UserService;
-import com.example.demo.untity.Merchant;
 import com.example.demo.untity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Api("测试")
+@CrossOrigin
 @RestController
 public class FirstController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private MerchantService merchantService;
-
-
-    @ApiOperation("获取id")
-    @GetMapping("user")
-    public Result testGet(Integer id) {
-        System.out.println("获取到的ID为" + id);
-        return Result.ok().data("id", id);
-    }
-
-
-    @ApiOperation("根据id获取数据")
-    @GetMapping("path/{id}")
-    public Result testPath(@PathVariable Integer id) {
-        System.out.println("获取到的ID为" + id);
-        return Result.ok().data("id", id);
-    }
-
-    @ApiOperation("post传输数据")
-    @PostMapping("login")
-    public Result testForm(String name, String password) {
-        System.out.println("name=" + name);
-        System.out.println("password=" + password);
-        Map<String, Object> data = new HashMap<>();
-        data.put("name", name);
-        data.put("password", password);
-        return Result.ok().data(data);
-    }
-
-    @PostMapping("json")
-    public Result testForm(@RequestBody User user) {
-        System.out.println("name=" + user.getName());
-        System.out.println("password=" + user.getPassword());
-        Map<String, Object> data = new HashMap<>();
-        data.put("name", user.getName());
-        data.put("password", user.getPassword());
-        return Result.ok().data(data);
-    }
-
-//    public void getAllUser(){
-//
-//    }
-
+    // 获取用户信息
     @ApiOperation("获取用户列表")
-    @GetMapping( "getUsers")
+    @GetMapping("getUsers")
     public Result getAll(){
         List<User> list = userService.getAllUser();
-        return Result.ok().data("users",list);
+        return Result.ok().data("user",list);
     }
 
-    //Hello
-    //test
-    //xwwd1
-    //陈雯雯
+    //删除用户信息
+    @ApiOperation("根据ID删除用户")
+    @DeleteMapping("deleteUsers/{id}")
+    public Result deleteUser(@PathVariable Integer id){
+        userService.deleteUser(id);
+        return Result.ok().message("删除成功");
+    }
+
+    // 创建新用户的POST请求
+    @ApiOperation("创建新用户")
+    @PostMapping("/addUsers")
+    public Result createUser(User user) {
+        try {
+            System.out.println("创建用户============：" + user);
+            User createdUser = userService.createUser(user);
+            return Result.setResult(ResultCodeEnum.SUCCESS)
+                    .message("用户创建成功")
+                    .data("user", createdUser);
+        } catch (Exception e) {
+            // 捕获异常并返回错误信息
+            return Result.setError(ResultCodeEnum.INTERNAL_ERROR)
+                    .message("用户创建失败: " + e.getMessage());
+        }
+    }
+
+    // 更新用户信息
+    @PostMapping("/updateUsers")
+    public Result updateUser(User user) {
+        if (user.getId() == 0) {
+            return Result.setError(ResultCodeEnum.INTERNAL_ERROR).message("User ID is required");
+        }
+        try {
+            User updatedUser = userService.updateUser(user);
+            return Result.ok().data("user", updatedUser);
+        } catch (RuntimeException e) {
+            return Result.setError(ResultCodeEnum.INTERNAL_ERROR).message(e.getMessage());
+        }
+    }
 }
