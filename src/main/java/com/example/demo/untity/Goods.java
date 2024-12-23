@@ -17,6 +17,15 @@ public class Goods {
     @ApiModelProperty(value = "商品状态")
     private Boolean state; // 使用 Boolean 来表示状态可能更合适
 
+    @ApiModelProperty(value = "上架")
+    private Boolean isOnShelf;
+
+    @ApiModelProperty(value = "新品")
+    private Boolean isNew;
+
+    @ApiModelProperty(value = "推荐")
+    private Boolean isRecommended;
+
     // 无参构造函数
     public Goods() {
     }
@@ -72,6 +81,33 @@ public class Goods {
                 ", goodsname='" + goodsname + '\'' +
                 ", price=" + price +
                 ", state=" + state +
+                ",is_on_shelf"+ isOnShelf +
+                "is_new"+ isNew +
+                "is_recommended"+ isRecommended +
                 '}';
+    }
+
+    public Boolean getIsRecommended() {
+        return isRecommended;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
+
+    public Boolean getIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(Boolean isNew) {
+        this.isNew = isNew;
+    }
+
+    public Boolean getIsOnShelf() {
+        return isOnShelf;
+    }
+
+    public void setIsOnShelf(Boolean isOnShelf) {
+        this.isOnShelf = isOnShelf;
     }
 }

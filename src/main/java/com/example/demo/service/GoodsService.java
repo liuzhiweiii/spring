@@ -15,5 +15,8 @@ public interface GoodsService {
 
     // 新增的方法：根据ID删除用户
     boolean deleteGoodsById(Integer goodsid);
+
+    // 更新商品状态
+    void updateGoodsStatus(Integer id, Boolean isOnShelf, Boolean isNew, Boolean isRecommended);
 }
 
