@@ -16,6 +16,10 @@
         VALUES (#{merchantId}, #{merchantName}, #{merchantIntital}, #{merchantCorrelation}, #{merchantRanking}, #{merchantShow})
     </insert>
 
+    <select id="getMerchantById" resultType="com.example.demo.untity.Merchant">
+        SELECT * FROM sys_merchant WHERE merchantId = #{id}
+    </select>
+
     <delete id="deleteMerchantById" parameterType="int">
         delete from sys_merchant where merchantId = #{id}
     </delete>

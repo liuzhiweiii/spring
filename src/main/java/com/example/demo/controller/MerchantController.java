@@ -35,8 +35,16 @@ public class MerchantController {
 
     @ApiOperation("新增商户")
     @PostMapping("/addMerchant")
-    public Result addMerchant(@RequestBody Merchant merchant) {
+    public Result addMerchant( Merchant merchant) {
+        merchantService.addMerchant(merchant);
         return Result.ok().message("商户新增成功");
+    }
+
+    @ApiOperation("根据ID获取商户信息")
+    @GetMapping("getMerchantById/{id}")
+    public Result getMerchantById(@PathVariable Integer id) {
+        Merchant merchant = merchantService.getMerchantById(id);
+        return Result.ok().data("merchants", merchant);
     }
 
     @ApiOperation("删除商户信息")
