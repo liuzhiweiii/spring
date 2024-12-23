@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LoginUserMapper">
+    <!-- 登录验证登录的 SQL com.example.demo.mapper.LoginUserMapper语句 -->
+    <select id="checkLogin" resultType="string">
+        SELECT loginPsw FROM login_user WHERE loginName = #{loginName}
+    </select>
+    <!-- 注册用户的 SQL 语句 -->
+    <insert id="registerUser" parameterType="com.example.demo.untity.LoginUser">
+        INSERT INTO login_user (loginName, loginPsw) VALUES (#{loginName}, #{loginPsw})
+    </insert>
+</mapper>

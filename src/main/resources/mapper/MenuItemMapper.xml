@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口位置-->
+<mapper namespace="org.example.spring.mapper.MenuItemMapper">
+    <!--    \\resultType返回结果类型-->
+    <select id="getAllmenu" resultType="org.example.spring.entity.MenuItem">
+        SELECT * FROM menu_items
+    </select>
+    <select id="getMenuByOne" resultType="org.example.spring.entity.MenuItem">
+        SELECT * FROM menu_items WHERE menuLevel = '一级';
+    </select>
+    <select id="getMenuBySecond" resultType="org.example.spring.entity.MenuItem">
+        SELECT * FROM menu_items WHERE menuLevel = '二级' AND level = #{level}
+    </select>
+    <resultMap id="MenuItemResultMap" type="org.example.spring.entity.MenuItem">
+        <id property="id" column="id"/>
+        <result property="menuName" column="menuName"/>
+        <result property="frontendName" column="frontendName"/>
+<!--        <result property="icon" column="icon"/>-->
+        <result property="displayOrder" column="displayOrder"/>
+        <result property="isVisible" column="isVisible"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="MenuItemResultMap">
+        SELECT id, menuName, frontendName, displayOrder, isVisible FROM menu_items
+    </select>
+
+    <select id="findById" parameterType="long" resultMap="MenuItemResultMap">
+        SELECT id, menuName, frontendName, displayOrder, isVisible
+        FROM menu_items
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="org.example.spring.entity.MenuItem">
+        INSERT INTO menu_items (id,menuName, menuLevel,frontendName, displayOrder, isVisible)
+        VALUES (#{id},#{menuName},#{menuLevel},#{frontendName}, #{isVisible},#{displayOrder})
+    </insert>
+
+    <update id="update" parameterType="org.example.spring.entity.MenuItem">
+        UPDATE menu_items
+        SET menuName = #{menuName},
+            frontendName = #{frontendName},
+            displayOrder = #{displayOrder},
+            isVisible = #{isVisible}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM menu_items
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
