@@ -75,11 +75,4 @@ public class FirstController {
     //test
     //xwwd1
     //陈雯雯
-
-    @ApiOperation("获取商户信息")
-    @GetMapping("getMerchants")
-    public Result getMerchant(){
-        List<Merchant> list = merchantService.getAllMerchant();
-        return Result.ok().data("merchants",list);
-    }
 }
