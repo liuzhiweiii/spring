@@ -4,4 +4,25 @@
     <select id="getAllMerchant" resultType="com.example.demo.untity.Merchant">
         select * from sys_merchant
     </select>
+
+    <select id="searchMerchants" parameterType="string" resultType="com.example.demo.untity.Merchant">
+        SELECT * FROM sys_merchant
+        WHERE merchantName LIKE CONCAT('%', #{search}, '%')
+    </select>
+
+
+    <insert id="addMerchant" parameterType="com.example.demo.untity.Merchant">
+        INSERT INTO sys_merchant (merchantId, merchantName, merchantIntital, merchantCorrelation, merchantRanking, merchantShow)
+        VALUES (#{merchantId}, #{merchantName}, #{merchantIntital}, #{merchantCorrelation}, #{merchantRanking}, #{merchantShow})
+    </insert>
+
+    <delete id="deleteMerchantById" parameterType="int">
+        delete from sys_merchant where merchantId = #{id}
+    </delete>
+
+    <select id="searchMerchantsByShow" parameterType="int" resultType="com.example.demo.untity.Merchant">
+        SELECT * FROM sys_merchant
+        WHERE merchantShow = #{merchantShow}
+    </select>
+
 </mapper>

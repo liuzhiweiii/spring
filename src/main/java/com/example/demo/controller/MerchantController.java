@@ -7,14 +7,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api("测试")
+@Api("商户管理")
 @RestController
 public class MerchantController {
     @Autowired
@@ -27,12 +24,37 @@ public class MerchantController {
         return Result.ok().data("merchants",list);
     }
 
-//    @ApiOperation("获取添加商户")
-//    @PostMapping("/addMerchant")
-//    public ResponseEntity<String> addMerchant(@RequestBody Merchant merchant) {
-//        // 保存商户信息
-//        merchantService.saveMerchant(merchant);
-//        return ResponseEntity.ok("商户信息保存成功！");
-//    }
+    @ApiOperation("查询用户信息")
+    @GetMapping("searchMerchants/{search}")
+    public Result searchMerchantList(@RequestParam(required = false) String search) {
+        List<Merchant> list = (search != null && !search.trim().isEmpty())
+                ? merchantService.searchMerchants(search)
+                : merchantService.getAllMerchant();
+        return Result.ok().data("merchants", list);
+    }
 
+    @ApiOperation("新增商户")
+    @PostMapping("/addMerchant")
+    public Result addMerchant(@RequestBody Merchant merchant) {
+        return Result.ok().message("商户新增成功");
+    }
+
+    @ApiOperation("删除商户信息")
+    @DeleteMapping("/deleteMerchant/{id}")
+    public ResponseEntity<Result> deleteMerchant(@PathVariable Integer id){
+        merchantService.deleteMerchantById(id);
+        return ResponseEntity.ok(Result.ok().message("删除成功"));
+    }
+
+    @ApiOperation("根据是否显示查询用户信息")
+    @GetMapping("searchMerchantsByShow/{merchantShow}")
+    public Result searchMerchantsByShow(@PathVariable(required = false) Integer merchantShow) {
+        List<Merchant> list;
+        if (merchantShow != null) {
+            list = merchantService.searchMerchantsByShow(merchantShow);
+        } else {
+            list = merchantService.getAllMerchant();
+        }
+        return Result.ok().data("merchants", list);
+    }
 }

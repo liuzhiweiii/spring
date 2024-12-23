@@ -16,4 +16,23 @@ public class MerchantServiceImpl implements MerchantService {
     public List<Merchant> getAllMerchant() {
         return merchantMapper.getAllMerchant();
     }
+
+    @Override
+    public List<Merchant> searchMerchants(String search) {
+        return merchantMapper.searchMerchants(search);
+    }
+    @Override
+    public void addMerchant(Merchant merchant) {
+        merchantMapper.addMerchant(merchant);
+    }
+
+    @Override
+    public void deleteMerchantById(Integer id) {
+        merchantMapper.deleteMerchantById(id);
+    }
+
+    @Override
+    public List<Merchant> searchMerchantsByShow(Integer merchantShow) {
+        return merchantMapper.searchMerchantsByShow(merchantShow);
+    }
 }
