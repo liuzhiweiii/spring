@@ -78,4 +78,14 @@ public class GoodsController {
 //        goodsService.updateGoodsStatus(id, is_on_shelf, is_new, is_recommended);
 //        return Result.ok().message("状态更新成功");
 //    }
+//@ApiOperation("编辑商品信息")
+//@PutMapping("/{goodsid}")
+//public Result updateGoods(@PathVariable Integer id, @RequestBody Goods goods) {
+//    Goods updatedGoods = goodsService.updateGoods(id, goods);
+//    if (updatedGoods!= null) {
+//        return Result.ok().data("goods", updatedGoods).message("商品编辑成功");
+//    } else {
+//        return Result.error("编辑失败，商品不存在或其他原因");
+//    }
+//}
 }

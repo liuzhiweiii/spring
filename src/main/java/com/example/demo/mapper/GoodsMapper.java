@@ -31,4 +31,9 @@ public interface GoodsMapper {
                            @Param("isOnShelf") Boolean isOnShelf,
                            @Param("isNew") Boolean isNew,
                            @Param("isRecommended") Boolean isRecommended);
+
+    /**
+     * 更新商品所有信息（完整编辑商品）
+     */
+//    void updateGoods(@Param("goods") Goods goods);
 }

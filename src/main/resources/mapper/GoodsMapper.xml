@@ -27,4 +27,20 @@
         </set>
         WHERE id = #{id}
     </update>
+
+<!--    &lt;!&ndash; 更新商品所有信息（完整编辑商品） &ndash;&gt;-->
+<!--    <update id="updateGoods" keyProperty="goodsid" keyColumn="goodsid" useGeneratedKeys="true">-->
+<!--        UPDATE goods-->
+<!--        SET-->
+<!--            goodsname = #{goods.goodsname},-->
+<!--            price = #{goods.price},-->
+<!--            state = #{goods.state},-->
+<!--            is_on_shelf = #{goods.isOnShelf},-->
+<!--            is_new = #{goods.isNew},-->
+<!--            is_recommended = #{goods.isRecommended},-->
+<!--            label = #{goods.label},-->
+<!--            goodsphoto = #{goods.goodsphoto}-->
+<!--        WHERE goodsid = #{goods.goodsid}-->
+<!--    </update>-->
+
 </mapper>

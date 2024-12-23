@@ -26,6 +26,13 @@ public class Goods {
     @ApiModelProperty(value = "推荐")
     private Boolean isRecommended;
 
+    @ApiModelProperty(value = "标签")
+    private String label;
+
+    @ApiModelProperty(value = "商品图片")
+    private String goodsphoto;
+
+
     // 无参构造函数
     public Goods() {
     }
@@ -81,9 +88,9 @@ public class Goods {
                 ", goodsname='" + goodsname + '\'' +
                 ", price=" + price +
                 ", state=" + state +
-                ",is_on_shelf"+ isOnShelf +
-                "is_new"+ isNew +
-                "is_recommended"+ isRecommended +
+                ", isOnShelf=" + isOnShelf +
+                ", isNew=" + isNew +
+                ", isRecommended=" + isRecommended +
                 '}';
     }
 
@@ -109,5 +116,31 @@ public class Goods {
 
     public void setIsOnShelf(Boolean isOnShelf) {
         this.isOnShelf = isOnShelf;
+    }
+
+    public Goods(Integer goodsid, String goodsname, Double price, Boolean state, Boolean isOnShelf, Boolean isNew, Boolean isRecommended) {
+        this.goodsid = goodsid;
+        this.goodsname = goodsname;
+        this.price = price;
+        this.state = state;
+        this.isOnShelf = isOnShelf;
+        this.isNew = isNew;
+        this.isRecommended = isRecommended;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getGoodsphoto() {
+        return goodsphoto;
+    }
+
+    public void setGoodsphoto(String goodsphoto) {
+        this.goodsphoto = goodsphoto;
     }
 }

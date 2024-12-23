@@ -18,5 +18,9 @@ public interface GoodsService {
 
     // 更新商品状态
     void updateGoodsStatus(Integer id, Boolean isOnShelf, Boolean isNew, Boolean isRecommended);
+//
+//    Goods updateGoods(Integer goodsId, Goods goods); // 添加编辑商品的方法声明
+
+
 }
 

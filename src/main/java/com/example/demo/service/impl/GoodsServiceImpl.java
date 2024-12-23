@@ -11,6 +11,25 @@ import java.util.List;
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
+//    @Override
+//    public Goods updateGoods(Integer goodsId, Goods goods) {
+//        Goods existingGoods = goodsMapper.getGoodsById(goodsId);
+//        if (existingGoods!= null) {
+//            // 更新商品的各个属性
+//            existingGoods.setGoodsname(goods.getGoodsname());
+//            existingGoods.setPrice(goods.getPrice());
+//            existingGoods.setState(goods.getState());
+//            existingGoods.setIsOnShelf(goods.getIsOnShelf());
+//            existingGoods.setIsNew(goods.getIsNew());
+//            existingGoods.setIsRecommended(goods.getIsRecommended());
+//            existingGoods.setLabel(goods.getLabel());
+//            existingGoods.setGoodsphoto(goods.getGoodsphoto());
+//            goodsMapper.updateGoods(existingGoods);
+//            return existingGoods;
+//        }
+//        return null;
+//    }
+
     @Autowired
     private GoodsMapper goodsMapper;
 
