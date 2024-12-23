@@ -144,4 +144,6 @@ public class Goods {
     public void setGoodsphoto(String goodsphoto) {
         this.goodsphoto = goodsphoto;
     }
+
+    //
 }
